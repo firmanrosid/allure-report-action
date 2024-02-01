@@ -29,7 +29,7 @@ jobs:
         if: always()
         #id: allure-report
         with:
-          subfolder: debug
+          subfolder: smoke
           allure_results: allure-results
           #gh_pages: gh-pages
           #allure_report: allure-report
