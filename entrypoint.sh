@@ -2,6 +2,7 @@
 
 unset JAVA_HOME
 
+ls -l
 echo "==== get params ===="
 echo "1. ${INPUT_GH_PAGES}"
 echo "2. ${INPUT_ALLURE_HISTORY}"
