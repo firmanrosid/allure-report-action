@@ -19,7 +19,6 @@ ENV ROOT=/app \
 RUN mkdir -p $ROOT
 
 WORKDIR $ROOT
-RUN cat ./entrypoint.sh
 COPY ./entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
