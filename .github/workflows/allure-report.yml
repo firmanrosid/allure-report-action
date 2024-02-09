@@ -12,13 +12,12 @@ on:
 jobs:
   allure:
     name: Generate Allure Report
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: Setup Docker MacOS
-        run: |
-          brew install docker
-          brew install colima
-          colima start
+      # - name: Setup Docker MacOS
+      #   run: |
+      #     brew install docker
+      #     colima start
 
       - uses: actions/checkout@v2
 
