@@ -2,8 +2,26 @@
 
 unset JAVA_HOME
 
+ls -l
+echo "==== get params ===="
+echo "1. ${INPUT_GH_PAGES}"
+echo "2. ${INPUT_ALLURE_HISTORY}"
+echo "3. ${INPUT_GITHUB_REPO}"
+echo "4. ${REPOSITORY_OWNER_SLASH_NAME##*/}"
+echo "5. ${INPUT_GITHUB_REPO_OWNER}"
+echo "6. ${INPUT_SUBFOLDER}"
+echo "7. ${INPUT_KEEP_REPORTS}"
+echo "8. ${INPUT_GITHUB_RUN_NUM}"
+echo "9. ${INPUT_GITHUB_RUN_ID}"
+echo "10. ${GITHUB_WORKSPACE}"
+echo "==== end get params ===="
+
 mkdir -p ./${INPUT_GH_PAGES}
 mkdir -p ./${INPUT_ALLURE_HISTORY}
+ls -l ${INPUT_GH_PAGES}
+echo "==== End 1 ===="
+ls -l ${INPUT_ALLURE_HISTORY}
+echo "==== End 2 ===="
 cp -r ./${INPUT_GH_PAGES}/. ./${INPUT_ALLURE_HISTORY}
 
 REPOSITORY_OWNER_SLASH_NAME=${INPUT_GITHUB_REPO}
@@ -11,10 +29,13 @@ REPOSITORY_NAME=${REPOSITORY_OWNER_SLASH_NAME##*/}
 GITHUB_PAGES_WEBSITE_URL="https://${INPUT_GITHUB_REPO_OWNER}.github.io/${REPOSITORY_NAME}"
 echo "Github pages url $GITHUB_PAGES_WEBSITE_URL"
 echo "Input subfolder $INPUT_SUBFOLDER"
-ls -a ${INPUT_GH_PAGES}
-ls -a ${INPUT_ALLURE_HISTORY}
+ls -l ${INPUT_GH_PAGES}
+echo "==== End 3 ===="
+ls -l ${INPUT_ALLURE_HISTORY}
+echo "==== End 4 ===="
 
 if [[ ${INPUT_SUBFOLDER} != '' ]]; then
+    echo "change allure history from root to subfolder ${INPUT_SUBFOLDER}"
     INPUT_ALLURE_HISTORY="${INPUT_ALLURE_HISTORY}/${INPUT_SUBFOLDER}"
     INPUT_GH_PAGES="${INPUT_GH_PAGES}/${INPUT_SUBFOLDER}"
     echo "NEW allure history folder ${INPUT_ALLURE_HISTORY}"
@@ -57,7 +78,9 @@ cat executor.json
 mv ./executor.json ./${INPUT_ALLURE_RESULTS}
 
 #environment.properties
-echo "URL=${GITHUB_PAGES_WEBSITE_URL}" >> ./${INPUT_ALLURE_RESULTS}/environment.properties
+# echo "URL=${GITHUB_PAGES_WEBSITE_URL}" >> ./${INPUT_ALLURE_RESULTS}/environment.properties
+# cat ${INPUT_ALLURE_RESULTS}/environment.properties
+# echo "==== End 5 ===="
 
 echo "keep allure history from ${INPUT_GH_PAGES}/last-history to ${INPUT_ALLURE_RESULTS}/history"
 cp -r ./${INPUT_GH_PAGES}/last-history/. ./${INPUT_ALLURE_RESULTS}/history

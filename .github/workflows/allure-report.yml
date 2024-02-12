@@ -1,18 +1,24 @@
 name: allure-report
 
 on:
+  workflow_dispatch:
   release:
     types:
       - created
-  push:
-    branches-ignore:
-      - '!master'
+  # push:
+    # branches-ignore:
+      # - '!master'
 
 jobs:
   allure:
     name: Generate Allure Report
     runs-on: ubuntu-latest
     steps:
+      # - name: Setup Docker MacOS
+      #   run: |
+      #     brew install docker
+      #     colima start
+
       - uses: actions/checkout@v2
 
       - name: Get Allure history
@@ -28,11 +34,12 @@ jobs:
         if: always()
         #id: allure-report
         with:
+          subfolder: smoke
           allure_results: allure-results
           #gh_pages: gh-pages
           #allure_report: allure-report
           allure_history: allure-history
-          keep_reports: 20
+          keep_reports: 3
 
       - name: Deploy report to Github Pages
         if: always()
