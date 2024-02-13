@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21.0.2_13-jre-alpine
+FROM --platform=linux/arm64 eclipse-temurin:21.0.2_13-jre-alpine
 
 ARG RELEASE=2.27.0
 ARG ALLURE_REPO=https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
