@@ -3,19 +3,6 @@
 unset JAVA_HOME
 
 ls -l
-echo "==== get params ===="
-echo "1. ${INPUT_GH_PAGES}"
-echo "2. ${INPUT_ALLURE_HISTORY}"
-echo "3. ${INPUT_GITHUB_REPO}"
-echo "4. ${REPOSITORY_OWNER_SLASH_NAME##*/}"
-echo "5. ${INPUT_GITHUB_REPO_OWNER}"
-echo "6. ${INPUT_SUBFOLDER}"
-echo "7. ${INPUT_KEEP_REPORTS}"
-echo "8. ${INPUT_GITHUB_RUN_NUM}"
-echo "9. ${INPUT_GITHUB_RUN_ID}"
-echo "10. ${GITHUB_WORKSPACE}"
-echo "==== end get params ===="
-
 mkdir -p ./${INPUT_GH_PAGES}
 mkdir -p ./${INPUT_ALLURE_HISTORY}
 ls -l ${INPUT_GH_PAGES}
@@ -95,3 +82,16 @@ echo "copy allure-report to ${INPUT_ALLURE_HISTORY}/${INPUT_GITHUB_RUN_NUM}"
 cp -r ./${INPUT_ALLURE_REPORT}/. ./${INPUT_ALLURE_HISTORY}/${INPUT_GITHUB_RUN_NUM}
 echo "copy allure-report history to /${INPUT_ALLURE_HISTORY}/last-history"
 cp -r ./${INPUT_ALLURE_REPORT}/history/. ./${INPUT_ALLURE_HISTORY}/last-history
+
+echo "==== get params ===="
+echo "1. ${INPUT_GH_PAGES}"
+echo "2. ${INPUT_ALLURE_HISTORY}"
+echo "3. ${INPUT_GITHUB_REPO}"
+echo "4. ${REPOSITORY_OWNER_SLASH_NAME##*/}"
+echo "5. ${INPUT_GITHUB_REPO_OWNER}"
+echo "6. ${INPUT_SUBFOLDER}"
+echo "7. ${INPUT_KEEP_REPORTS}"
+echo "8. ${INPUT_GITHUB_RUN_NUM}"
+echo "9. ${INPUT_GITHUB_RUN_ID}"
+echo "10. ${GITHUB_WORKSPACE}"
+echo "==== end get params ===="
