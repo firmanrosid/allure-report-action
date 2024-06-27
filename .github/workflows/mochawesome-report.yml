@@ -28,7 +28,7 @@ jobs:
         if: always()
         #id: allure-report
         with:
-          subfolder: smoke
+          subfolder: service-smoke
           report_history: report-history
 
       - name: Deploy report to Github Pages
